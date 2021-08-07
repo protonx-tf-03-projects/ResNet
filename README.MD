@@ -1,21 +1,21 @@
-# Project Name <--- FIXME
+# ResNet
 
-Library Logo <--- **FIXME**
 
 <p align="center">
-    <img src='https://storage.googleapis.com/protonx-cloud-storage/transformer/protonx-transf.png' width=200 class="center">
+    <img src='https://miro.medium.com/max/868/1*ZSvSAACQVvUHU1qS-mkYKw.png' width=200 class="center">
 </p>
 
 Description about your project. Why do you choose to build this?  <--- **FIXME**
 
 Slide about your project (if it's available) <--- **FIXME**
 
-Architecture Image <--- **FIXME**
-
+<p align="center">
+    <img src='https://developer.ridgerun.com/wiki/images/f/f5/Resnet_architecture.png' width=677 class="center">
+</p>
 
 Authors:
-- Github: members github name <--- **FIXME**
-- Email: members emails <--- **FIXME**
+- Github: dark-kazansky, bdghuy, hoangcaobao, hoangduc199891, sonnymetvn
+- Email: dark.kazansky@gmail.com, caobaohoang03@gmail.com, hoangduc199892@gmail.com, bdghuy@gmail.com, sonny.metvn@gmail.com
 
 Advisors:
 - Github: advisor github name <--- **FIXME**
