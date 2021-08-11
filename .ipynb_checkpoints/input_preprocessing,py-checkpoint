@@ -11,11 +11,9 @@ if __name__ == "__main__":
     parser.add_argument("--train-folder", default='{}/data/train'.format(home_dir), type=str)
     parser.add_argument("--valid-folder", default='{}/data/validation'.format(home_dir), type=str)
     parser.add_argument("--num-classes", default=2, type=int)
-    parser.add_argument("--batch-size", default=32, type=int)
     parser.add_argument("--image-size", default=150, type=int)
     parser.add_argument("--patch-size", default=5, type=int)
-    parser.add_argument("--validation-split", default=0.2, type=float)
-    parser.add_argument("--image-channels", default=3, type=int)
+
     args = parser.parse_args()
 
     for i, arg in enumerate(vars(args)):
