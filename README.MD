@@ -26,7 +26,7 @@ Advisors:
 
 - Step 2: cd into ResNet, and type this command line into your terminal.
 ```
-conda env create -f requirements.txt 
+conda env create -f environment.yml
 ```
 
 - Step 3: run conda environment using this command:
