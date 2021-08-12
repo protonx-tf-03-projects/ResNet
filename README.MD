@@ -22,7 +22,7 @@ Advisors:
 - Email: advisor emails <--- **FIXME**
 
 ## I.  Set up environment
-- Step 1: in your terminal, type: git clone https://github.com/protonx-tf-03-projects/ResNet.git
+- Step 1: in your terminal, type: ```git clone https://github.com/protonx-tf-03-projects/ResNet.git```
 
 - Step 2: cd into ResNet, and type this command line into your terminal.
 ```
