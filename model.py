@@ -59,12 +59,36 @@ def resnet_block(x, f, n, s=2):
         x = identity_block(x, f)
     return x
 
-def resnet34(input_shape, classes):
+def resnet50(input_shape, classes):
     input = Input(input_shape)
     x = stage1(input)
     x = resnet_block(x, 64, 3, 1)
     x = resnet_block(x, 128, 4)
     x = resnet_block(x, 256, 6)
+    x = resnet_block(x, 512, 3)
+    x = AveragePooling2D()(x)
+    output = Dense(classes, activation='softmax')(x)
+    model = Model(input, output)
+    return model
+
+def resnet101(input_shape, classes):
+    input = Input(input_shape)
+    x = stage1(input)
+    x = resnet_block(x, 64, 3, 1)
+    x = resnet_block(x, 128, 4)
+    x = resnet_block(x, 256, 23)
+    x = resnet_block(x, 512, 3)
+    x = AveragePooling2D()(x)
+    output = Dense(classes, activation='softmax')(x)
+    model = Model(input, output)
+    return model
+
+def resnet152(input_shape, classes):
+    input = Input(input_shape)
+    x = stage1(input)
+    x = resnet_block(x, 64, 3, 1)
+    x = resnet_block(x, 128, 8)
+    x = resnet_block(x, 256, 36)
     x = resnet_block(x, 512, 3)
     x = AveragePooling2D()(x)
     output = Dense(classes, activation='softmax')(x)
