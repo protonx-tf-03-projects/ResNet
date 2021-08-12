@@ -1,5 +1,5 @@
 # This file may be used to create an environment using:
-# $ conda create --name <env> --file <this file>
+# $ conda create --name resnes_team --file <this file>
 # platform: win-64
 absl-py=0.13.0=pypi_0
 astunparse=1.6.3=pypi_0

@@ -22,26 +22,46 @@ Advisors:
 - Email: advisor emails <--- **FIXME**
 
 ## I.  Set up environment
-- Step 1: <--- **FIXME**
+- Step 1: in your terminal, type: git clone https://github.com/protonx-tf-03-projects/ResNet.git
 
-```python
-conda env create -f environment.yml
+- Step 2: cd into ResNet, and type this command line into your terminal.
+```
+conda env create -f requirements.txt 
 ```
 
-- Step 2: <--- **FIXME**
-```
+- Step 3: run conda environment using this command:
 
 ```
-
-- Step 3: <--- **FIXME**
-
-```
-
+conda activate resnet_team
 ``` 
 
 ## II.  Set up your dataset
 
 - Guide user how to download your data and set the data pipeline <--- **FIXME**
+II.1. create a folder named "data"
+II.2. in folder "data", create 2 folders train and validation in the data folder (which was created already). Then Please copy your images with the corresponding names into these folders.
+
++) train folder was used for the training process
++) validation folder was used for validating training result after each epoch
+
+Structure of these folders.
+```
+train/
+...cats/
+......cat.0.jpg
+......cat.1.jpg
+...dogs/
+......dog.0.jpg
+......dog.1.jpg
+```
+```
+validation/
+......cat.0.jpg
+......cat.1.jpg
+...dogs/
+......dog.0.jpg
+......dog.1.jpg
+```
 - References: [NLP](https://github.com/bangoc123/transformer) and [CV](https://github.com/bangoc123/mlp-mixer)
 
 ## III. Training Process
