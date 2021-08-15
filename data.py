@@ -1,8 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
-import numpy as np
-import matplotlib.pyplot as plt
 
 URL = 'https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip'
 zip_dir = tf.keras.utils.get_file('cats_and_dogs_filterted.zip', origin=URL, extract=True)
@@ -33,30 +31,15 @@ print("Total validation images:", total_val)
 BATCH_SIZE = 100
 IMG_SHAPE  = 224 # Our training data consists of images with width of 224x224
 
-# augmented images with horizontal flip
-image_gen = ImageDataGenerator(rescale=1./255, horizontal_flip=True)
-train_data_gen = image_gen.flow_from_directory(batch_size=BATCH_SIZE,
-                                               directory=train_dir,
-                                               shuffle=True,
-                                               target_size=(IMG_SHAPE,IMG_SHAPE))
-
-#augmented images with rotation
-image_gen = ImageDataGenerator(rescale=1./255, rotation_range=45)
-train_data_gen = image_gen.flow_from_directory(batch_size=BATCH_SIZE,
-                                               directory=train_dir,
-                                               shuffle=True,
-                                               target_size=(IMG_SHAPE, IMG_SHAPE))
-
+# augmented images
 image_gen_train = ImageDataGenerator(
       rescale=1./255,
       rotation_range=40,
       width_shift_range=0.2,
       height_shift_range=0.2,
       shear_range=0.2,
-      zoom_range=0.2,
       horizontal_flip=True,
       fill_mode='nearest')
-
 train_data_gen = image_gen_train.flow_from_directory(batch_size=BATCH_SIZE,
                                                      directory=train_dir,
                                                      shuffle=True,
@@ -68,5 +51,3 @@ val_data_gen = image_gen_val.flow_from_directory(batch_size=BATCH_SIZE,
                                                  directory=validation_dir,
                                                  target_size=(IMG_SHAPE, IMG_SHAPE),
                                                  class_mode='binary')
-
-
