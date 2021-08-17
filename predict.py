@@ -30,9 +30,9 @@ if __name__ == "__main__":
     image=load_img(args.test_image)
     input_arr=img_to_array(image)
     input_arr=np.array([input_arr])
-    print("================FINISH LOADING TEST IMAGE==================")
+    print("================FINISH LOADING TEST IMAGE=================")
 
     print("===================PREDICTING=====================")
     result=np.argmax(model.predict(input_arr),axis=1)
     print("YOUR RESULT AFTER GO THROUGH RESNET {}".format(result))
-    print("==================END PREDICTING=====================")
+    print("=================END PREDICTING==================")
