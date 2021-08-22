@@ -16,8 +16,13 @@ if __name__ == "__main__":
 
 
     print('---------------------Welcome to ResNet-------------------')
-    print('Github: hoangcaobao')
-    print('Email: caobaohoang03@gmail.com')
+    print("Team leader")
+    print('Github: dark-kazansky')
+    print("Team member")
+    print('1. Github: hoangcaobao')
+    print('2. Github: sonnymetvn')
+    print('3. Github: hoangduc199891')
+    print('4. Github: bdghuy')
     print('---------------------------------------------------------------------')
     print('Predict using ResNet model for test file path {0}'.format(args.test_file_path)) # FIXME
     print('===========================')
@@ -32,7 +37,7 @@ if __name__ == "__main__":
     input_arr=np.array([input_arr])
     print("================FINISH LOADING TEST IMAGE=================")
 
-    print("===================PREDICTING=====================")
+    print("======================PREDICTING==========================")
     result=np.argmax(model.predict(input_arr),axis=1)
     print("YOUR RESULT AFTER GO THROUGH RESNET {}".format(result))
-    print("=================END PREDICTING==================")
+    print("====================END PREDICTING========================")
