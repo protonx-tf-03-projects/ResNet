@@ -147,4 +147,3 @@ def resnet101V2(input_shape=(224,224,3),num_classes=1000):
 
 def resnet152V2(input_shape=(224,224,3),num_classes=1000):
   return build(input_shape,num_classes,bottleneck_block_V2,[3,8,36,3])
-
