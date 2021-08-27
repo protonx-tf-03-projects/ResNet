@@ -1,4 +1,4 @@
-from components.stage import stage
+from .components import stage
 from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, MaxPooling2D, GlobalAveragePooling2D,ReLU, Dense
 from tensorflow.keras import Model
 
