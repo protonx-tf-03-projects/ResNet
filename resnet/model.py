@@ -3,7 +3,7 @@ from tensorflow.keras.layers import Layer
 from tensorflow.keras import Sequential
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Layer, Input, Add, Dense, Activation, ZeroPadding2D, BatchNormalization, Flatten, Conv2D, AveragePooling2D, MaxPooling2D, GlobalMaxPooling2D, GlobalAveragePooling2D
-
+from tensorflow.keras.initializers import glorot_uniform
 
 class ResLayer(Layer):
   def __init__(self, filter, num_block, use_BottleNeck = False):
