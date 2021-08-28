@@ -24,6 +24,7 @@ import numpy as np
 from argparse import ArgumentParser
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
+from tensorflow.keras.initializers import glorot_uniform
 import tensorflow_addons as tfa
 import os
 
@@ -33,14 +34,14 @@ if __name__ == "__main__":
     # Arguments users used when running command lines
     parser.add_argument('--train-folder', default='Data/Train', type=str, help='Where training data is located')
     parser.add_argument('--valid-folder', default='Data/Validation', type=str, help='Where validation data is located')
-    parser.add_argument('--model', default='resnet', type=str, help='Type of model')
+    parser.add_argument('--model', default='resnet18', type=str, help='Type of model')
     parser.add_argument('--num-classes', default=1, type=int, help='Number of classes')
     parser.add_argument("--batch-size", default=64, type=int)
     parser.add_argument('--image-size', default=224, type=int, help='Size of input image')
     parser.add_argument('--lr', default=0.001, type=float, help='Learning rate')
     parser.add_argument("--epochs", default=1000, type=int)
     parser.add_argument('--image-channels', default=3, type=int, help='Number channel of input image')
-    parser.add_argument('--model-folder', default='.output/', type=str, help='Folder to save trained model')
+    # parser.add_argument('--model-folder', default='.output/', type=str, help='Folder to save trained model')
     home_dir = os.getcwd()
     args = parser.parse_args()
 
@@ -120,15 +121,18 @@ if __name__ == "__main__":
 
     model.build(input_shape=(None, args.image_size,
                              args.image_size, args.image_channels))
-    optimizer = tfa.optimizers.AdamW(learning_rate=args.lr)
+    optimizer = Adam(learning_rate=args.lr)
     # loss = SparseCategoricalCrossentropy()
     loss = BinaryCrossentropy()
     model.compile(optimizer, loss = loss, metrics=['accuracy'])
 
     # Traning
-    model.fit(train_generator,
-              epochs=args.epochs,
-              batch_size=args.batch_size,
-              validation_data=val_generator)
+    model.fit(
+        train_generator,
+        steps_per_epoch=8,
+        epochs=30,
+        verbose=1,
+        validation_data=val_generator,
+        validation_steps=8)
     # Save model
-    model.save(args.model_folder)
+    # model.save(args.model_folder)

@@ -17,8 +17,8 @@ class BasicBlock(Layer):
                              kernel_initializer=glorot_uniform(seed=0))
         self.Bn2b = BatchNormalization(axis=3)
 
-    def call(self, input_tensor):
-        X = self.Conv2a(input_tensor)
+    def call(self, input_tensor, *args, **kwargs):
+        X = self.Conv2a(input_tensor, *args, **kwargs)
         X = self.Bn2a(X)
         X = Activation('relu')(X)
 
@@ -41,8 +41,8 @@ class BottleNeckBlock(Layer):
     self.Conv2c = Conv2D(f*4, kernel_size= (1, 1), strides = (1,1), padding = 'valid', kernel_initializer = glorot_uniform(seed=0))
     self.Bn2c = BatchNormalization(axis = 3)
 
-  def call(self, input_tensor):
-    X = self.Conv2a(input_tensor)
+  def call(self, input_tensor, *args, **kwargs):
+    X = self.Conv2a(input_tensor, *args, **kwargs)
     X = self.Bn2a(X)
     X = Activation('relu')(X)
 
@@ -68,12 +68,12 @@ class ConvolutionalBlock(Layer):
       self.downsample = Sequential()
       self.downsample.add(Conv2D(f*self.expansion, kernel_size= (1, 1), strides = 2, padding = 'valid'))
       self.downsample.add(BatchNormalization(axis = 3))
-  def call(self, input_tensor):
+  def call(self, input_tensor, *args, **kwargs):
     ##### MAIN PATH #####
-    X = self.ConBlock(input_tensor)
+    X = self.ConBlock(input_tensor, *args, **kwargs)
 
     ##### SHORTCUT PATH #### (21 lines)
-    X_shortcut = self.downsample(input_tensor)
+    X_shortcut = self.downsample(input_tensor, *args, **kwargs)
 
     # Final step: Add shortcut value to main path, and pass it through a RELU activation (2 lines)
     X += X_shortcut
@@ -96,11 +96,11 @@ class BuildingBlock(Layer):
         else:
             self.Down = 0
 
-    def call(self, input_tensor):
+    def call(self, input_tensor, *args, **kwargs):
         if (self.Down != 0):
-            X = self.Down(input_tensor)
+            X = self.Down(input_tensor, *args, **kwargs)
         else:
-            X = self.Block(input_tensor)
+            X = self.Block(input_tensor, *args, **kwargs)
             X += input_tensor
             X = Activation('relu')(X)
         return X
