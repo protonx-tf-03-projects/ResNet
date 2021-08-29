@@ -2,36 +2,26 @@
 
 
 <p align="center">
-    <img src='https://miro.medium.com/max/868/1*ZSvSAACQVvUHU1qS-mkYKw.png' width=200 class="center">
+    <img src='https://d2l.ai/_images/residual-block.svg' width=200 class="center">
 </p>
 
-Description about your project. Why do you choose to build this?  <--- **FIXME**
+Slide to tell how did we analyze and implement Resnet: [Click here](https://docs.google.com/presentation/d/1a18IyR1nc6GLTU5hibw3VabLVFbPjeE1/edit?usp=sharing&ouid=110166614717096573075&rtpof=true&sd=true)
 
-Slide about your project (if it's available) <--- **FIXME**
-
-<p align="center">
-    <img src='https://developer.ridgerun.com/wiki/images/f/f5/Resnet_architecture.png' width=677 class="center">
-</p>
 
 Authors:
 - Github: dark-kazansky, bdghuy, hoangcaobao, hoangduc199891, sonnymetvn
 - Email: dark.kazansky@gmail.com, caobaohoang03@gmail.com, hoangduc199892@gmail.com, bdghuy@gmail.com, sonny.metvn@gmail.com
 
 Advisors:
-- Github: advisor github name <--- **FIXME**
-- Email: advisor emails <--- **FIXME**
+- Github: [bangoc123](https://github.com/bangoc123)
+- Email: bangoc.gdg@gmail.com 
 
 ## I.  Set up environment
-- Step 1: <--- **FIXME**
+- Step 1: Make sure you have install conda like miniConda or Anaconda. 
 
-```python
-conda env create -f environment.yml
-```
 
-- Step 2: <--- **FIXME**
-```
 
-```
+- Step 2: from your terminal ```cd``` into Resnet folder then```python conda env create -f environment.yml```
 
 - Step 3: <--- **FIXME**
 
