@@ -1,2 +1,5 @@
 __pycache__
-res\__pycache__
+/res/__pycache__
+/cats_and_dogs_filtered/train
+/cats_and_dogs_filtered/validation
+/cats_and_dogs_filtered/vectorize.py

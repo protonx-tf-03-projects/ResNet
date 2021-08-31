@@ -12,9 +12,9 @@ import os
 if __name__ == "__main__":
     parser = ArgumentParser()
 
-    # Arguments users used when running command lines
-    parser.add_argument('--train-folder', default= 'D:\\nha\Machine_Learning\TensorProtonx\Project\ResNet\Data\Train', type=str, help='Where training data is located')
-    parser.add_argument('--valid-folder', default='D:\\nha\Machine_Learning\TensorProtonx\Project\ResNet\Data\Validation', type=str, help='Where validation data is located')
+    # Arguments users used when running command lies
+    parser.add_argument('--train-folder', default= '', type=str, help='Where training data is located')
+    parser.add_argument('--valid-folder', default= '', type=str, help='Where validation data is located')
     parser.add_argument('--model', default='resnet152', type=str, help='Type of model')
     parser.add_argument('--num-classes', default=1, type=int, help='Number of classes')
     parser.add_argument("--batch-size", default=64, type=int)
@@ -83,15 +83,15 @@ if __name__ == "__main__":
     train_generator = training_datagen.flow_from_directory(TRAINING_DIR, target_size=(args.image_size, args.image_size), class_mode = class_mode)
     val_generator = val_datagen.flow_from_directory(TEST_DIR, target_size=(args.image_size, args.image_size), class_mode = class_mode)
     # Create model
-    if (args.model == 'resnet18'):
+    if args.model == 'resnet18':
         model = ResNet18(num_classes = classes, activation=activation)
-    elif (args.model == 'resnet34'):
+    elif args.model == 'resnet34':
         model = ResNet34(num_classes = classes, activation=activation)
-    elif (args.model == 'resnet50'):
+    elif args.model == 'resnet50':
         model = ResNet50(num_classes = classes, activation=activation)
-    elif (args.model == 'resnet101'):
+    elif args.model == 'resnet101':
         model = ResNet101(num_classes = classes, activation=activation)
-    elif (args.model == 'resnet152'):
+    elif args.model == 'resnet152':
         model = ResNet152(num_classes = classes, activation=activation)
     else:
         raise 'Invalid model. Valid option: resnet18, resnet34, resnet50, resnet101, resnet152'
@@ -101,15 +101,15 @@ if __name__ == "__main__":
     model.summary()
 
 
-    if (args.optimizer == 'adam'):
+    if args.optimizer == 'adam':
         optimizer = Adam(learning_rate=args.lr)
-    elif (args.optimizer == 'sgd'):
+    elif args.optimizer == 'sgd':
         optimizer = SGD(learning_rate=args.lr)
-    elif (args.optimizer == 'rmsprop'):
+    elif args.optimizer == 'rmsprop':
         optimizer = RMSprop(learning_rate=args.lr)
-    elif (args.optimizer == 'adadelta'):
+    elif args.optimizer == 'adadelta':
         optimizer = Adadelta(learning_rate=args.lr)
-    elif (args.optimizer == 'adamax'):
+    elif args.optimizer == 'adamax':
         optimizer = Adamax(learning_rate=args.lr)
     else:
         raise 'Invalid optimizer. Valid option: adam, sgd, rmsprop, adadelta, adamax'
