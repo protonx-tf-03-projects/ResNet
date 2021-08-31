@@ -1,11 +1,11 @@
-from resnet.model import ResNet18, ResNet34, ResNet50, ResNet101, ResNet152
+from res.model import ResNet18, ResNet34, ResNet50, ResNet101, ResNet152
 
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Input, Conv2D,BatchNormalization, AveragePooling2D, MaxPooling2D, Activation, Dropout, Flatten, Dense
 from tensorflow.keras.losses import SparseCategoricalCrossentropy, BinaryCrossentropy
 from tensorflow.keras.optimizers import Adam, SGD, RMSprop, Adadelta, Adamax
+from tensorflow.keras.layers import Input
 from argparse import ArgumentParser
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.models import Model
 
 import os
 
@@ -13,16 +13,16 @@ if __name__ == "__main__":
     parser = ArgumentParser()
 
     # Arguments users used when running command lines
-    parser.add_argument('--train-folder', default='Data/Train', type=str, help='Where training data is located')
-    parser.add_argument('--valid-folder', default='Data/Validation', type=str, help='Where validation data is located')
-    parser.add_argument('--model', default='resnet50', type=str, help='Type of model')
+    parser.add_argument('--train-folder', default= 'D:\\nha\Machine_Learning\TensorProtonx\Project\ResNet\Data\Train', type=str, help='Where training data is located')
+    parser.add_argument('--valid-folder', default='D:\\nha\Machine_Learning\TensorProtonx\Project\ResNet\Data\Validation', type=str, help='Where validation data is located')
+    parser.add_argument('--model', default='resnet152', type=str, help='Type of model')
     parser.add_argument('--num-classes', default=1, type=int, help='Number of classes')
-    parser.add_argument("--batch-size", default=32, type=int)
+    parser.add_argument("--batch-size", default=64, type=int)
     parser.add_argument('--image-size', default=224, type=int, help='Size of input image')
     parser.add_argument('--optimizer', default='adam', type=str, help='Types of optimizers')
-    parser.add_argument('--lr', default=0.01, type=float, help='Learning rate')
+    parser.add_argument('--lr', default=0.001, type=float, help='Learning rate')
     parser.add_argument("--epochs", default=30, type=int, help = 'Number of epochs')
-    parser.add_argument("--steps-per-epochs", default=8, type=int, help='Number of steps per epoche')
+    parser.add_argument("--steps-per-epochs", default=30, type=int, help='Number of steps per epoche')
     parser.add_argument("--validation-step", default=8, type=int, help='Number of validation steps')
     parser.add_argument('--image-channels', default=3, type=int, help='Number channel of input image')
     parser.add_argument('--rotation-range', default=20, type=int, help='Range of image rotation')
@@ -34,10 +34,10 @@ if __name__ == "__main__":
     parser.add_argument('--vertical-flip', default=True, type=bool, help='Flip the image vertically')
     parser.add_argument('--validation-split', default=0.2, type=float, help='Ratio of split train to test')
 
-
+    args = parser.parse_args()
     # parser.add_argument('--model-folder', default='.output/', type=str, help='Folder to save trained model')
     home_dir = os.getcwd()
-    args = parser.parse_args()
+
 
 
 
@@ -83,32 +83,23 @@ if __name__ == "__main__":
     train_generator = training_datagen.flow_from_directory(TRAINING_DIR, target_size=(args.image_size, args.image_size), class_mode = class_mode)
     val_generator = val_datagen.flow_from_directory(TEST_DIR, target_size=(args.image_size, args.image_size), class_mode = class_mode)
     # Create model
-    if args.model == 'resnet18':
+    if (args.model == 'resnet18'):
         model = ResNet18(num_classes = classes, activation=activation)
-    if args.model == 'resnet34':
+    elif (args.model == 'resnet34'):
         model = ResNet34(num_classes = classes, activation=activation)
-    if args.model == 'resnet50':
+    elif (args.model == 'resnet50'):
         model = ResNet50(num_classes = classes, activation=activation)
-    if args.model == 'resnet101':
+    elif (args.model == 'resnet101'):
         model = ResNet101(num_classes = classes, activation=activation)
-    if args.model == 'resnet152':
+    elif (args.model == 'resnet152'):
         model = ResNet152(num_classes = classes, activation=activation)
     else:
-        model = Sequential()
-        model.add(Conv2D(64, (3, 3), activation='relu', input_shape=(args.image_size, args.image_size, args.image_channels)))
-        model.add(MaxPooling2D(2, 2))
-        model.add(Conv2D(64, (3, 3), activation='relu'))
-        model.add(MaxPooling2D(2, 2))
-        model.add(Conv2D(128, (3, 3), activation='relu'))
-        model.add(MaxPooling2D(2, 2))
-        model.add(Conv2D(128, (3, 3), activation='relu'))
-        model.add(MaxPooling2D(2, 2))
-        model.add(Flatten())
-        model.add(Dropout(0.5))
-        model.add(Dense(512, activation='relu'))
-        model.add(Dense(classes, activation = activation))
+        raise 'Invalid model. Valid option: resnet18, resnet34, resnet50, resnet101, resnet152'
 
     model.build(input_shape=(None, args.image_size, args.image_size, args.image_channels))
+    # model1 = Model(input= Input(args.image_size, args.image_size, args.image_channels),output = model)
+    model.summary()
+
 
     if (args.optimizer == 'adam'):
         optimizer = Adam(learning_rate=args.lr)
