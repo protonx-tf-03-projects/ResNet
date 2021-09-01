@@ -21,9 +21,9 @@ if __name__ == "__main__":
     parser.add_argument('--optimizer', default='adam', type=str, help='Types of optimizers')
     parser.add_argument('--lr', default=0.001, type=float, help='Learning rate')
     parser.add_argument('--epochs', default=120, type=int, help = 'Number of epochs')
-    parser.add_argument('--steps-per-epochs', default=8, type=int, help='Number of steps per epoche')
-    parser.add_argument('--validation-step', default=8, type=int, help='Number of validation steps')
     parser.add_argument('--image-channels', default=3, type=int, help='Number channel of input image')
+    parser.add_argument('--class-mode', default='sparse', type=str, help='Class mode to compile')
+
 
     # parser.add_argument('--model-folder', default='.output/', type=str, help='Folder to save trained model')
     args = parser.parse_args()
@@ -41,30 +41,21 @@ if __name__ == "__main__":
     TRAINING_DIR = args.train_folder
     TEST_DIR = args.valid_folder
     
-    if (args.num_classes > 0 and args.num_classes <= 2):
-        loss = BinaryCrossentropy()
-        class_mode = 'binary'
-        classes = 1
-        activation = 'sigmoid'
-    else:
-        loss = SparseCategoricalCrossentropy()
-        class_mode = 'categorical'
-        classes = args.num_classes
-        activation = 'softmax'
+    loss = SparseCategoricalCrossentropy()
+    class_mode = args.class_mode
+    classes = args.num_classes
         
-    if args.train_folder != '' and args.valid_folder != '':
-        training_datagen = ImageDataGenerator(
-            rescale=1. / 255,
-            rotation_range=20,
-            width_shift_range=0.2,
-            height_shift_range=0.2,
-            shear_range=0.2,
-            zoom_range=0.2)
-        val_datagen = ImageDataGenerator(rescale=1. / 255)
+    training_datagen = ImageDataGenerator(
+        rescale=1. / 255,
+        rotation_range=20,
+        width_shift_range=0.2,
+        height_shift_range=0.2,
+        shear_range=0.2,
+        zoom_range=0.2)
+    val_datagen = ImageDataGenerator(rescale=1. / 255)
 
-        train_generator = training_datagen.flow_from_directory(TRAINING_DIR, target_size=(224, 244), batch_size= 64, class_mode = 'sparse' )
-        val_generator = val_datagen.flow_from_directory(TEST_DIR, target_size=(224, 224), batch_size= 64, class_mode = 'sparse')
-
+    train_generator = training_datagen.flow_from_directory(TRAINING_DIR, target_size=(224, 244), batch_size= 64, class_mode = class_mode )
+    val_generator = val_datagen.flow_from_directory(TEST_DIR, target_size=(224, 224), batch_size= 64, class_mode = class_mode)
 
     # Create model
     if args.model == 'resnet18':
@@ -99,16 +90,17 @@ if __name__ == "__main__":
 
 
 
-    model.compile(optimizer, loss = loss, metrics=['accuracy'])
+    model.compile(optimizer=optimizer, 
+                loss=SparseCategoricalCrossentropy(),
+                metrics=['accuracy'])
+    
     best_model = ModelCheckpoint("resnet_best.h5", monitor='val_acc', verbose=1, save_best_only=True)
     # Traning
-    model.fit_generator(
+    model.fit(
         train_generator,
-        steps_per_epoch=args.steps_per_epochs,
         epochs=args.epochs,
         verbose=1,
         validation_data=val_generator,
-        validation_steps=args.validation_step,
         callbacks=[best_model])
     # Save model
     model.save('mymodel')
