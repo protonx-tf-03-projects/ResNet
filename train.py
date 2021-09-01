@@ -24,23 +24,9 @@ if __name__ == "__main__":
     parser.add_argument("--steps-per-epochs", default=8, type=int, help='Number of steps per epoche')
     parser.add_argument("--validation-step", default=8, type=int, help='Number of validation steps')
     parser.add_argument('--image-channels', default=3, type=int, help='Number channel of input image')
-    parser.add_argument('--rotation-range', default=20, type=int, help='Range of image rotation')
-    parser.add_argument('--width-shift-range', default=0.2, type=float, help='Range of width shift of image')
-    parser.add_argument('--height-shift-range', default=0.2, type=float, help='Range of height shift of image')
-    parser.add_argument('--shear-range', default=0.2, type=float, help='Range of shear of image')
-    parser.add_argument('--zoom-range', default=0.2, type=float, help='Range of zoom of image')
-    parser.add_argument('--horizontal-flip', default=True, type=bool, help='Flip the image horizontally')
-    parser.add_argument('--vertical-flip', default=True, type=bool, help='Flip the image vertically')
-    parser.add_argument('--validation-split', default=0.2, type=float, help='Ratio of split train to test')
-
 
     # parser.add_argument('--model-folder', default='.output/', type=str, help='Folder to save trained model')
-    home_dir = os.getcwd()
     args = parser.parse_args()
-
-
-
-
 
     # Project Description
 
@@ -54,20 +40,7 @@ if __name__ == "__main__":
     # Invoke folder path
     TRAINING_DIR = args.train_folder
     TEST_DIR = args.valid_folder
-
-    if args.train_folder != '' and args.valid_folder != '':
-        # Load train images from folder
-        training_datagen = ImageDataGenerator(
-            rescale=1. / 255,
-            rotation_range=args.rotation_range,
-            width_shift_range=args.width_shift_range,
-            height_shift_range=args.height_shift_range,
-            shear_range=args.shear_range,
-            zoom_range=args.zoom_range,
-            horizontal_flip=args.horizontal_flip,
-            validation_split=args.validation_split)
-        val_datagen = ImageDataGenerator(rescale=1. / 255)
-
+    
     if (args.num_classes > 0 and args.num_classes <= 2):
         loss = BinaryCrossentropy()
         class_mode = 'binary'
@@ -78,12 +51,21 @@ if __name__ == "__main__":
         class_mode = 'categorical'
         classes = args.num_classes
         activation = 'softmax'
-    loss = BinaryCrossentropy()
-    class_mode = 'binary'
-    classes = 1
-    activation = 'sigmoid'
-    train_generator = training_datagen.flow_from_directory(TRAINING_DIR, target_size=(args.image_size, args.image_size), class_mode = class_mode)
-    val_generator = val_datagen.flow_from_directory(TEST_DIR, target_size=(args.image_size, args.image_size), class_mode = class_mode)
+        
+    if args.train_folder != '' and args.valid_folder != '':
+        training_datagen = ImageDataGenerator(
+            rescale=1. / 255,
+            rotation_range=20,
+            width_shift_range=0.2,
+            height_shift_range=0.2,
+            shear_range=0.2,
+            zoom_range=0.2)
+        val_datagen = ImageDataGenerator(rescale=1. / 255)
+
+        train_generator = training_datagen.flow_from_directory(TRAINING_DIR, target_size=(224, 244), batch_size= 64, class_mode = 'sparse' )
+        val_generator = val_datagen.flow_from_directory(TEST_DIR, target_size=(224, 224), batch_size= 64, class_mode = 'sparse')
+
+
     # Create model
     if args.model == 'resnet18':
         model = resnet18(num_classes = classes)
