@@ -49,6 +49,8 @@ There are some important arguments for the script you should consider when runni
 - `valid-folder`: The folder of validation data
 - ...
 
+Notebook training: [Click here](https://colab.research.google.com/drive/1cb7Nkkn5o_U7cVvnxXmfx-jdyoc4slhu?usp=sharing)
+
 ## IV. Predict Process
 
 ```bash
