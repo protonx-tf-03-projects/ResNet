@@ -2,7 +2,7 @@
 
 
 <p align="center">
-    <img src='https://drive.google.com/file/d/1vrBr6gCtLVpoEpCjqIMzGUdll7z_JLev/view?usp=sharing' width=200 class="center">
+    <img src='https://ibb.co/Y7v0YP1' width=200 class="center">
 </p>
 
 Slide to tell how did we analyze and implement Resnet: [Click here](https://docs.google.com/presentation/d/1a18IyR1nc6GLTU5hibw3VabLVFbPjeE1/edit?usp=sharing&ouid=110166614717096573075&rtpof=true&sd=true)
