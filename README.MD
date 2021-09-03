@@ -2,7 +2,7 @@
 
 
 <p align="center">
-    <img src='https://d2l.ai/_images/residual-block.svg' width=200 class="center">
+    <img src='https://drive.google.com/file/d/1vrBr6gCtLVpoEpCjqIMzGUdll7z_JLev/view?usp=sharing' width=200 class="center">
 </p>
 
 Slide to tell how did we analyze and implement Resnet: [Click here](https://docs.google.com/presentation/d/1a18IyR1nc6GLTU5hibw3VabLVFbPjeE1/edit?usp=sharing&ouid=110166614717096573075&rtpof=true&sd=true)
@@ -14,7 +14,7 @@ Authors:
 
 Advisors:
 - Github: [bangoc123](https://github.com/bangoc123)
-- Email: bangoc.gdg@gmail.com 
+- Email: protonxai@gmail.com 
 
 ## I.  Set up environment
 - Step 1: Make sure you have install conda like miniConda or Anaconda. 
@@ -23,16 +23,10 @@ Advisors:
 
 - Step 2: from your terminal ```cd``` into Resnet folder then```python conda env create -f environment.yml```
 
-- Step 3: <--- **FIXME**
-
-```
-
-``` 
 
 ## II.  Set up your dataset
 
-- Guide user how to download your data and set the data pipeline <--- **FIXME**
-- References: [NLP](https://github.com/bangoc123/transformer) and [CV](https://github.com/bangoc123/mlp-mixer)
+- Run ```data.py``` to download cat&dog data set or you can prepair you dataset by yourself following instruction of folderStructure.py
 
 ## III. Training Process
 
@@ -72,36 +66,18 @@ python predict.py --test-data ${link_to_test_data}
 
 ## V. Result and Comparision
 
-**FIXME**
-
 Your implementation
 ```
-Epoch 7/10
-782/782 [==============================] - 261s 334ms/step - loss: 0.8315 - acc: 0.8565 - val_loss: 0.8357 - val_acc: 0.7978
-Epoch 8/10
-782/782 [==============================] - 261s 334ms/step - loss: 0.3182 - acc: 0.8930 - val_loss: 0.6161 - val_acc: 0.8047
-Epoch 9/10
-782/782 [==============================] - 261s 333ms/step - loss: 1.1965 - acc: 0.8946 - val_loss: 3.9842 - val_acc: 0.7855
-Epoch 10/10
-782/782 [==============================] - 261s 333ms/step - loss: 0.4717 - acc: 0.8878 - val_loss: 0.4894 - val_acc: 0.8262
+Epoch 117/120
+8/8 [==============================] - 55s 2ms/step - loss: 0.0728 - acc: 0.9750 - val_loss: 1.9918 - val_acc: 0.7240
+Epoch 118/120
+8/8 [==============================] - 55s 2ms/step - loss: 0.0885 - acc: 0.9670 - val_loss: 0.4392 - val_acc: 0.8430
+Epoch 119/120
+8/8 [==============================] - 55s 2ms/step - loss: 0.0829 - acc: 0.9660 - val_loss: 0.4879 - val_acc: 0.8160
+Epoch 120/120
+8/8 [==============================] - 55s 2ms/step - loss: 0.0749 - acc: 0.9680 - val_loss: 0.5288 - val_acc: 0.8200
 
 ```
-
-**FIXME**
-
-Other architecture
-
-```
-Epoch 6/10
-391/391 [==============================] - 115s 292ms/step - loss: 0.1999 - acc: 0.9277 - val_loss: 0.4719 - val_acc: 0.8130
-Epoch 7/10
-391/391 [==============================] - 114s 291ms/step - loss: 0.1526 - acc: 0.9494 - val_loss: 0.5224 - val_acc: 0.8318
-Epoch 8/10
-391/391 [==============================] - 115s 293ms/step - loss: 0.1441 - acc: 0.9513 - val_loss: 0.5811 - val_acc: 0.7875
-```
-
-Your comments about these results <--- **FIXME**
-
 
 ## VI. Running Test
 
