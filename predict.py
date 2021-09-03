@@ -9,7 +9,7 @@ from argparse import ArgumentParser
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("--test-image", default="test.png", type=str, required=True)
-    parser.add_argument("--model-folder", default="model", type=str)
+    parser.add_argument("--model-path", default="best_model.h5", type=str)
 
    
     args = parser.parse_args()
@@ -28,7 +28,7 @@ if __name__ == "__main__":
     print('===========================')
 
     print("===================LOADING MODEL==========================")
-    model=load_model(args.model_folder)
+    model=load_model(args.model_path)
     print("================FINISH LOADING MODE=======================")
 
     print("===================LOADING TEST IMAGE=====================")
