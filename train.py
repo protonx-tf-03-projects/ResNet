@@ -23,6 +23,7 @@ if __name__ == "__main__":
     parser.add_argument('--epochs', default=120, type=int, help = 'Number of epochs')
     parser.add_argument('--image-channels', default=3, type=int, help='Number channel of input image')
     parser.add_argument('--class-mode', default='sparse', type=str, help='Class mode to compile')
+    parser.add_argument('--model-path', default='best_model.h5', type=str, help='Path to save trained model')
 
 
     # parser.add_argument('--model-folder', default='.output/', type=str, help='Folder to save trained model')
@@ -94,7 +95,12 @@ if __name__ == "__main__":
                 loss=SparseCategoricalCrossentropy(),
                 metrics=['accuracy'])
     
-    best_model = ModelCheckpoint("resnet_best.h5", monitor='val_acc', verbose=1, save_best_only=True)
+    best_model = ModelCheckpoint(args.model_path,
+                                 save_weights_only=False,
+                                 monitor='val_accuracy',
+                                 verbose=1,
+                                 mode='max',
+                                 save_best_only=True)
     # Traning
     model.fit(
         train_generator,
@@ -102,5 +108,3 @@ if __name__ == "__main__":
         verbose=1,
         validation_data=val_generator,
         callbacks=[best_model])
-    # Save model
-    model.save('mymodel')
