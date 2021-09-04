@@ -61,14 +61,51 @@ python predict.py --test-data ${link_to_test_data}
 
 Your implementation
 ```
-Epoch 117/120
-8/8 [==============================] - 55s 2ms/step - loss: 0.0728 - acc: 0.9750 - val_loss: 1.9918 - val_acc: 0.7240
-Epoch 118/120
-8/8 [==============================] - 55s 2ms/step - loss: 0.0885 - acc: 0.9670 - val_loss: 0.4392 - val_acc: 0.8430
-Epoch 119/120
-8/8 [==============================] - 55s 2ms/step - loss: 0.0829 - acc: 0.9660 - val_loss: 0.4879 - val_acc: 0.8160
-Epoch 120/120
-8/8 [==============================] - 55s 2ms/step - loss: 0.0749 - acc: 0.9680 - val_loss: 0.5288 - val_acc: 0.8200
+Epoch 00189: val_accuracy did not improve from 0.87700
+Epoch 190/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0667 - accuracy: 0.9770 - val_loss: 0.8112 - val_accuracy: 0.8360
+
+Epoch 00190: val_accuracy did not improve from 0.87700
+Epoch 191/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0517 - accuracy: 0.9800 - val_loss: 0.7989 - val_accuracy: 0.8460
+
+Epoch 00191: val_accuracy did not improve from 0.87700
+Epoch 192/200
+32/32 [==============================] - 54s 2s/step - loss: 0.0486 - accuracy: 0.9845 - val_loss: 0.6213 - val_accuracy: 0.8630
+
+Epoch 00192: val_accuracy did not improve from 0.87700
+Epoch 193/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0464 - accuracy: 0.9835 - val_loss: 0.5506 - val_accuracy: 0.8450
+
+Epoch 00193: val_accuracy did not improve from 0.87700
+Epoch 194/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0471 - accuracy: 0.9835 - val_loss: 1.0926 - val_accuracy: 0.8220
+
+Epoch 00194: val_accuracy did not improve from 0.87700
+Epoch 195/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0713 - accuracy: 0.9770 - val_loss: 1.0000 - val_accuracy: 0.8200
+
+Epoch 00195: val_accuracy did not improve from 0.87700
+Epoch 196/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0512 - accuracy: 0.9835 - val_loss: 1.9371 - val_accuracy: 0.6830
+
+Epoch 00196: val_accuracy did not improve from 0.87700
+Epoch 197/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0575 - accuracy: 0.9805 - val_loss: 1.1376 - val_accuracy: 0.7760
+
+Epoch 00197: val_accuracy did not improve from 0.87700
+Epoch 198/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0484 - accuracy: 0.9825 - val_loss: 0.6597 - val_accuracy: 0.8590
+
+Epoch 00198: val_accuracy did not improve from 0.87700
+Epoch 199/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0712 - accuracy: 0.9720 - val_loss: 1.4779 - val_accuracy: 0.8010
+
+Epoch 00199: val_accuracy did not improve from 0.87700
+Epoch 200/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0484 - accuracy: 0.9825 - val_loss: 0.6597 - val_accuracy: 0.8590
+
+Epoch 00200: val_accuracy did not improve from 0.87700
 
 ```
 
