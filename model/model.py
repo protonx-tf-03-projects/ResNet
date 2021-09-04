@@ -11,7 +11,7 @@ def build(input_shape,num_classes,layers,use_bottleneck=False):
              kernel_size=7,
              strides=2,
              padding='same',
-             kernel_initializer='glorot_uniform',
+             kernel_initializer='he_normal',
              name='conv1_conv')(input)
   net=BatchNormalization(name='conv1_bn')(net)
   net=ReLU(name='conv1_relu')(net)
