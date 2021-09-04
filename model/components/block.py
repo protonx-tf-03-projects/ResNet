@@ -17,7 +17,7 @@ def basic_block(input, filter_num, stride=1,stage_idx=-1, block_idx=-1):
                kernel_size=3,
                strides=stride,
                padding='same',
-               kernel_initializer='',
+               kernel_initializer='he_normal',
                name='conv{}_block{}_1_conv'.format(stage_idx, block_idx))(input)
   bn1=BatchNormalization(name='conv{}_block{}_1_bn'.format(stage_idx, block_idx))(conv1)
   relu1=ReLU(name='conv{}_block{}_1_relu'.format(stage_idx, block_idx))(bn1)
