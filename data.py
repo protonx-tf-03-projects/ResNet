@@ -6,7 +6,7 @@ URL = 'https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip'
 zip_dir = tf.keras.utils.get_file('cats_and_dogs_filtered.zip', origin=URL, extract=True, cache_subdir = os.getcwd())
 os.rename('cats_and_dogs_filtered', 'Data')
 os.remove('cats_and_dogs_filtered.zip')
-base_dir = os.path.join(os.path.dirname(zip_dir), 'Data')
+base_dir = os.path.join(os.path.dirname(zip_dir), 'data')
 train_dir = os.path.join(base_dir, 'train')
 validation_dir = os.path.join(base_dir, 'validation')
 train_cats_dir = os.path.join(train_dir, 'cats')
