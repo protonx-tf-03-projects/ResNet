@@ -1,9 +1,6 @@
-import os
-import tensorflow as tf
-from model import *
+import cv2
 import numpy as np
-from tensorflow.keras.preprocessing.image import *
-from tensorflow.keras.models import *
+from google.colab.patches import cv2_imshow
 from argparse import ArgumentParser
 
 if __name__ == "__main__":
@@ -24,20 +21,24 @@ if __name__ == "__main__":
     print('3. Github: hoangduc199891')
     print('4. Github: bdghuy')
     print('---------------------------------------------------------------------')
-    print('Predict using ResNet model for test file path {0}'.format(args.test_file_path)) # FIXME
+    print('Predict using ResNet model for test file path {0}'.format(args.test_image)) # FIXME
     print('===========================')
 
     print("===================LOADING MODEL==========================")
-    model=load_model(args.model_path)
+    model=tf.keras.models.load_model('/content/best_model.h5')
+    model.evaluate(val_generator)
     print("================FINISH LOADING MODE=======================")
+    def pre_processing(img):
+      img=tf.image.resize(img,[224,224])
+      img/=225
+      img=tf.expand_dims(img, axis=0)
+      return img
+    def predict(model, img_path, label_dict=label_dict):
+      img=cv2.imread(img_path)
+      cv2_imshow(img)
+      img=pre_processing(img)
+      prediction=label_dict[np.argmax(model.predict(img))]
+      return prediction
 
-    print("===================LOADING TEST IMAGE=====================")
-    image=load_img(args.test_image)
-    input_arr=img_to_array(image)
-    input_arr=np.array([input_arr])
-    print("================FINISH LOADING TEST IMAGE=================")
-
-    print("======================PREDICTING==========================")
-    result=np.argmax(model.predict(input_arr),axis=1)
-    print("YOUR RESULT AFTER GO THROUGH RESNET {}".format(result))
+    predict(model,'/content/image.png')
     print("====================END PREDICTING========================")
