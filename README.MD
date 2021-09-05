@@ -113,6 +113,7 @@ Epoch 00200: val_accuracy did not improve from 0.87700
 
 The ```best_model.h5``` of resnet50 is too large to commit on github so you can download it [here](https://drive.google.com/file/d/1pDfrAt7wHvDZrX4uolFxwE7KeUVTJvY8/view?usp=sharing). Then copy to base folder to load model.
 In the ```./ResNet``` folder please run: ```predict.py --test-image "image-path"```
+
 Or you can try this: [<img src='https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667' width=100 class="left">](https://colab.research.google.com/drive/1ySFObB6ZPgxJyq8G9_dHpQypExXAgAI2?usp=sharing&fbclid=IwAR0rEWKeq3m4Qmis2DZ5HkhCgZSEYj95kTImWqE_HZejUgYZRj9UiYdnjDM)
 
 This is some results from us when we test for some regular dog or cat pictures:
