@@ -118,10 +118,10 @@ Or you can try this: [<img src='https://camo.githubusercontent.com/84f0493939e0c
 This is some results from us when we test for some regular dog or cat pictures:
 
 <p align="center">
-    <img src='https://i.imgur.com/UaAgqlO.jpeg' width=200 class="center">
+    <img src='https://i.imgur.com/UaAgqlO.jpeg' class="center">
 </p>
 <p align="center">
-    <img src='https://i.imgur.com/t3jZt9D.jpeg' width=200 class="center">
+    <img src='https://i.imgur.com/t3jZt9D.jpeg' class="center">
 </p>
 
 
