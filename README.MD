@@ -1,5 +1,7 @@
 # ResNet
 
+Implementation of MobileNets: [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385). Give us a star if you like this repo.
+
 <p align="center">
     <img src='https://i.ibb.co/XZmYNjK/Resnet-Logo.jpg' width=200 class="center">
 </p>
@@ -25,7 +27,15 @@ Advisors:
 
 ## II.  Set up your dataset
 
-- Run ```data.py``` to download cat&dog data set or you can prepare you dataset by yourself following to the instruction of folderStructure.py then run it.
+- Option 1: Run ```data.py``` to download cat&dog data set 
+- Option 2: Set up custom data set
+
+```python
+
+python folderStructure.py
+
+```
+and follow the instruction to create some custom data folders. Then, copy your images to these folders.
 
 ## III. Training Process
 Training script:
