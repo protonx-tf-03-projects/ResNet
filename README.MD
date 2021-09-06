@@ -25,7 +25,7 @@ Advisors:
 
 ## II.  Set up your dataset
 
-- Run ```data.py``` to download cat&dog data set or you can prepare you dataset by yourself following to the instruction of folderStructure.py
+- Run ```data.py``` to download cat&dog data set or you can prepare you dataset by yourself following to the instruction of folderStructure.py then run it.
 
 ## III. Training Process
 Training script:
