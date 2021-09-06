@@ -5,12 +5,21 @@ import os
     Output:
         Folder structure:
             main_directory/
-                ...class_a/
-                    ......a_image_1.jpg
-                    ......a_image_2.jpg
-                ...class_b/
-                    ......b_image_1.jpg
-                    ......b_image_2.jpg
+                .../data
+                    .../train
+                        ...class_a/
+                                ......a_image_1.jpg
+                                ......a_image_2.jpg
+                        ...class_b/
+                            ......b_image_1.jpg
+                            ......b_image_2.jpg
+                    .../validation
+                        ...class_a/
+                                ......a_image_1.jpg
+                                ......a_image_2.jpg
+                        ...class_b/
+                            ......b_image_1.jpg
+                            ......b_image_2.jpg
 """
 try:
     number = int(input('Enter the number of classes: '))
@@ -18,9 +27,9 @@ try:
         name = []
         for type in range(number):
             name.append(input("Type the name of class {}: ".format(type+1)))
-        os.mkdir('Data')
-        os.chdir('Data')
-        path = ['Train', 'Validation']
+        os.mkdir('data')
+        os.chdir('data')
+        path = ['train', 'validation']
         for i in path:
             os.mkdir(i)
             os.chdir('{}/'.format(i))
