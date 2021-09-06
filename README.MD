@@ -1,6 +1,6 @@
 # ResNet
 
-Implementation of MobileNets: [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385). Give us a star if you like this repo.
+Implementation of ResNet: [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385). Give us a star if you like this repo.
 
 <p align="center">
     <img src='https://i.ibb.co/XZmYNjK/Resnet-Logo.jpg' width=200 class="center">
