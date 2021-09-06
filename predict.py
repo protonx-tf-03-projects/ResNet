@@ -36,7 +36,7 @@ if __name__ == "__main__":
     model=load_model(args.model_path)
 
     # Load test images
-    image = preprocessing.image.load_img(arg.test_file_path, target_size=(224,224))
+    image = preprocessing.image.load_img(args.test_file_path, target_size=(224,224))
     input_arr = preprocessing.image.img_to_array(image)/225
     x = np.expand_dims(input_arr, axis=0)
 

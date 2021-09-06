@@ -61,7 +61,7 @@ if __name__ == "__main__":
     val_generator = val_datagen.flow_from_directory(TEST_DIR, target_size=(224, 224), batch_size= 64, class_mode = class_mode)
 
     class_names=list(train_generator.class_indices.keys())
-    with open(arg.class_names_path,'wb') as fp:
+    with open(args.class_names_path,'wb') as fp:
       pickle.dump(class_names, fp)
 
     # Create model
