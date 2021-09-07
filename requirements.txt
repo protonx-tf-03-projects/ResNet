@@ -45,5 +45,5 @@ vs2015_runtime=14.27.29016
 werkzeug=2.0.1
 wheel=0.36.2
 wincertstore=0.2
-wrapt=1.12.1=
+wrapt=1.12.1
 zipp=3.5.0
