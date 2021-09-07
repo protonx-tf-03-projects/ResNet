@@ -43,15 +43,13 @@ Training script:
 
 ```python
 
-python train.py --epochs ${epochs} --input-lang en --target-lang vi --input-path ${path_to_en_text_file} --target-path ${path_to_vi_text_file}
-
+python train.py --train-folder ${train_folder} --valid-folder ${valid_folder} --num-classes ${num_classes}  --epochs ${epochs}
 ```
 Example:
 
 ```python
 
-!python train.py --train-folder ${train_folder} --valid-folder ${valid_folder} --num-classes 2 --patch-size 5 --image-size 150 --lr 0.0001 --epochs 200 --num-heads 12 
-
+python train.py --model 'resnet34' --epochs 120 --num-classes 2 --train-folder $train_folder --valid-folder $valid_folder
 ``` 
 There are some important arguments for the script you should consider when running it:
 
