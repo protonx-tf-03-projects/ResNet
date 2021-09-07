@@ -1,5 +1,7 @@
 # ResNet
 
+Implementation of ResNet: [Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385). Give us a star if you like this repo.
+
 <p align="center">
     <img src='https://i.ibb.co/XZmYNjK/Resnet-Logo.jpg' width=200 class="center">
 </p>
@@ -16,16 +18,24 @@ Advisors:
 - Email: protonxai@gmail.com 
 
 ## I.  Set up environment
-- Step 1: Make sure you have install conda like miniConda or Anaconda. 
+- Step 1: Make sure you have installed conda like miniConda or Anaconda. 
 
 
 
-- Step 2: from your terminal ```cd``` into Resnet folder then```python conda env create -f environment.yml```
+- Step 2: from your terminal ```cd``` into Resnet folder then ```python conda env create -f environment.yml```
 
 
 ## II.  Set up your dataset
 
-- Run ```data.py``` to download cat&dog data set or you can prepair you dataset by yourself following instruction of folderStructure.py
+- Option 1: Run ```data.py``` to download cat&dog data set 
+- Option 2: Set up custom data set
+
+```python
+
+python folderStructure.py
+
+```
+and follow the instruction to create some custom data folders. Then, copy your images to these folders.
 
 ## III. Training Process
 Training script:
@@ -49,6 +59,8 @@ There are some important arguments for the script you should consider when runni
 - `valid-folder`: The folder of validation data
 - ...
 
+Notebook training: [<img src='https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667' width=100 class="left">](https://colab.research.google.com/drive/1cb7Nkkn5o_U7cVvnxXmfx-jdyoc4slhu?usp=sharing)
+
 ## IV. Predict Process
 
 ```bash
@@ -59,25 +71,69 @@ python predict.py --test-data ${link_to_test_data}
 
 Your implementation
 ```
-Epoch 117/120
-8/8 [==============================] - 55s 2ms/step - loss: 0.0728 - acc: 0.9750 - val_loss: 1.9918 - val_acc: 0.7240
-Epoch 118/120
-8/8 [==============================] - 55s 2ms/step - loss: 0.0885 - acc: 0.9670 - val_loss: 0.4392 - val_acc: 0.8430
-Epoch 119/120
-8/8 [==============================] - 55s 2ms/step - loss: 0.0829 - acc: 0.9660 - val_loss: 0.4879 - val_acc: 0.8160
-Epoch 120/120
-8/8 [==============================] - 55s 2ms/step - loss: 0.0749 - acc: 0.9680 - val_loss: 0.5288 - val_acc: 0.8200
+Epoch 00189: val_accuracy did not improve from 0.87700
+Epoch 190/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0667 - accuracy: 0.9770 - val_loss: 0.8112 - val_accuracy: 0.8360
+
+Epoch 00190: val_accuracy did not improve from 0.87700
+Epoch 191/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0517 - accuracy: 0.9800 - val_loss: 0.7989 - val_accuracy: 0.8460
+
+Epoch 00191: val_accuracy did not improve from 0.87700
+Epoch 192/200
+32/32 [==============================] - 54s 2s/step - loss: 0.0486 - accuracy: 0.9845 - val_loss: 0.6213 - val_accuracy: 0.8630
+
+Epoch 00192: val_accuracy did not improve from 0.87700
+Epoch 193/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0464 - accuracy: 0.9835 - val_loss: 0.5506 - val_accuracy: 0.8450
+
+Epoch 00193: val_accuracy did not improve from 0.87700
+Epoch 194/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0471 - accuracy: 0.9835 - val_loss: 1.0926 - val_accuracy: 0.8220
+
+Epoch 00194: val_accuracy did not improve from 0.87700
+Epoch 195/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0713 - accuracy: 0.9770 - val_loss: 1.0000 - val_accuracy: 0.8200
+
+Epoch 00195: val_accuracy did not improve from 0.87700
+Epoch 196/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0512 - accuracy: 0.9835 - val_loss: 1.9371 - val_accuracy: 0.6830
+
+Epoch 00196: val_accuracy did not improve from 0.87700
+Epoch 197/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0575 - accuracy: 0.9805 - val_loss: 1.1376 - val_accuracy: 0.7760
+
+Epoch 00197: val_accuracy did not improve from 0.87700
+Epoch 198/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0484 - accuracy: 0.9825 - val_loss: 0.6597 - val_accuracy: 0.8590
+
+Epoch 00198: val_accuracy did not improve from 0.87700
+Epoch 199/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0712 - accuracy: 0.9720 - val_loss: 1.4779 - val_accuracy: 0.8010
+
+Epoch 00199: val_accuracy did not improve from 0.87700
+Epoch 200/200
+32/32 [==============================] - 55s 2s/step - loss: 0.0484 - accuracy: 0.9825 - val_loss: 0.6597 - val_accuracy: 0.8590
+
+Epoch 00200: val_accuracy did not improve from 0.87700
 
 ```
 
 ## VI. Running Test
 
-When you want to modify the model, you need to run the test to make sure your change does not affect the whole system.
+The ```best_model.h5``` of resnet50 is too large to commit on github so you can download it [here](https://drive.google.com/file/d/1pDfrAt7wHvDZrX4uolFxwE7KeUVTJvY8/view?usp=sharing). Then copy to the base folder to load model.
+In the ```./ResNet``` folder please run: ```predict.py --test-image "image-path"```
 
-In the `./folder-name` **(FIXME)** folder please run:
+Or you can try this: [<img src='https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667' width=100 class="left">](https://colab.research.google.com/drive/1ySFObB6ZPgxJyq8G9_dHpQypExXAgAI2?usp=sharing&fbclid=IwAR0rEWKeq3m4Qmis2DZ5HkhCgZSEYj95kTImWqE_HZejUgYZRj9UiYdnjDM)
 
-```bash
-pytest
-```
+This is some results from us when we test for some regular dog or cat pictures:
+
+<p align="center">
+    <img src='https://i.imgur.com/UaAgqlO.jpeg' class="center">
+</p>
+<p align="center">
+    <img src='https://i.imgur.com/t3jZt9D.jpeg' class="center">
+</p>
+
 
 

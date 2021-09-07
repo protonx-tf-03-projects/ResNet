@@ -17,7 +17,7 @@ def basic_block(input, filter_num, stride=1,stage_idx=-1, block_idx=-1):
                kernel_size=3,
                strides=stride,
                padding='same',
-               kernel_initializer='glorot_uniform',
+               kernel_initializer='he_normal',
                name='conv{}_block{}_1_conv'.format(stage_idx, block_idx))(input)
   bn1=BatchNormalization(name='conv{}_block{}_1_bn'.format(stage_idx, block_idx))(conv1)
   relu1=ReLU(name='conv{}_block{}_1_relu'.format(stage_idx, block_idx))(bn1)
@@ -26,7 +26,7 @@ def basic_block(input, filter_num, stride=1,stage_idx=-1, block_idx=-1):
                kernel_size=3,
                strides=1,
                padding='same',
-               kernel_initializer='glorot_uniform',
+               kernel_initializer='he_normal',
                name='conv{}_block{}_2_conv'.format(stage_idx, block_idx))(relu1)
   bn2=BatchNormalization(name='conv{}_block{}_2_bn'.format(stage_idx, block_idx))(conv2)
 
@@ -47,7 +47,7 @@ def bottleneck_block(input, filter_num, stride=1, stage_idx=-1, block_idx=-1):
                kernel_size=1,
                strides=stride,
                padding='valid',
-               kernel_initializer='glorot_uniform',
+               kernel_initializer='he_normal',
                name='conv{}_block{}_1_conv'.format(stage_idx, block_idx))(input)
   bn1=BatchNormalization(name='conv{}_block{}_1_bn'.format(stage_idx, block_idx))(conv1)
   relu1=ReLU(name='conv{}_block{}_1_relu'.format(stage_idx, block_idx))(bn1)
@@ -56,7 +56,7 @@ def bottleneck_block(input, filter_num, stride=1, stage_idx=-1, block_idx=-1):
                kernel_size=3,
                strides=1,
                padding='same',
-               kernel_initializer='glorot_uniform',
+               kernel_initializer='he_normal',
                name='conv{}_block{}_2_conv'.format(stage_idx, block_idx))(relu1)
   bn2=BatchNormalization(name='conv{}_block{}_2_bn'.format(stage_idx, block_idx))(conv2)
   relu2=ReLU(name='conv{}_block{}_2_relu'.format(stage_idx, block_idx))(bn2)
@@ -65,7 +65,7 @@ def bottleneck_block(input, filter_num, stride=1, stage_idx=-1, block_idx=-1):
                kernel_size=1,
                strides=1,
                padding='valid',
-               kernel_initializer='glorot_uniform',
+               kernel_initializer='he_normal',
                name='conv{}_block{}_3_conv'.format(stage_idx, block_idx))(relu2)
   bn3=BatchNormalization(name='conv{}_block{}_3_bn'.format(stage_idx, block_idx))(conv3)
   
@@ -96,7 +96,7 @@ def resblock(input, filter_num, stride=1, use_bottleneck=False,stage_idx=-1, blo
                     kernel_size=1,
                     strides=stride,
                     padding='valid',
-                    kernel_initializer='glorot_uniform',
+                    kernel_initializer='he_normal',
                     name='conv{}_block{}_projection-shortcut_conv'.format(stage_idx, block_idx))(input)
     shortcut=BatchNormalization(name='conv{}_block{}_projection-shortcut_bn'.format(stage_idx, block_idx))(shortcut)
 
