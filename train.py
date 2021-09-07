@@ -6,6 +6,7 @@ from tensorflow.keras.optimizers import Adam, SGD, RMSprop, Adadelta, Adamax
 from argparse import ArgumentParser
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import ModelCheckpoint
+import pickle
 import os
 
 if __name__ == "__main__":
@@ -24,6 +25,7 @@ if __name__ == "__main__":
     parser.add_argument('--image-channels', default=3, type=int, help='Number channel of input image')
     parser.add_argument('--class-mode', default='sparse', type=str, help='Class mode to compile')
     parser.add_argument('--model-path', default='best_model.h5', type=str, help='Path to save trained model')
+    parser.add_argument('--class-names-path', default='class_names.pkl', type=str, help='Path to save class names')
 
 
     # parser.add_argument('--model-folder', default='.output/', type=str, help='Folder to save trained model')
@@ -57,6 +59,10 @@ if __name__ == "__main__":
 
     train_generator = training_datagen.flow_from_directory(TRAINING_DIR, target_size=(224, 244), batch_size= 64, class_mode = class_mode )
     val_generator = val_datagen.flow_from_directory(TEST_DIR, target_size=(224, 224), batch_size= 64, class_mode = class_mode)
+
+    class_names=list(train_generator.class_indices.keys())
+    with open(args.class_names_path,'wb') as fp:
+      pickle.dump(class_names, fp)
 
     # Create model
     if args.model == 'resnet18':
